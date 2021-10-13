@@ -16,7 +16,7 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="{{('public/frontend/images/ico/favicon.ico')}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div><!--/header_top-->
-        
+
         <div class="header-middle"><!--header-middle-->
             <div class="container">
                 <div class="row">
@@ -70,7 +70,7 @@
                                     <li><a href="#">UK</a></li>
                                 </ul>
                             </div>
-                            
+
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                                     DOLLAR
@@ -97,7 +97,7 @@
                 </div>
             </div>
         </div><!--/header-middle-->
-    
+
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
@@ -116,18 +116,18 @@
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li> 
-                                        <li><a href="checkout.html">Checkout</a></li> 
-                                        <li><a href="cart.html">Cart</a></li> 
-                                        <li><a href="login.html">Login</a></li> 
+                                        <li><a href="product-details.html">Product Details</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="login.html">Login</a></li>
                                     </ul>
-                                </li> 
+                                </li>
                                 <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
-                                </li> 
+                                </li>
                                 <li><a href="404.html">404</a></li>
                                 <li><a href="contact-us.html">Contact</a></li>
                             </ul>
@@ -142,7 +142,7 @@
             </div>
         </div><!--/header-bottom-->
     </header><!--/header-->
-    
+
     <section id="slider"><!--slider-->
         <div class="container">
             <div class="row">
@@ -153,7 +153,7 @@
                             <li data-target="#slider-carousel" data-slide-to="1"></li>
                             <li data-target="#slider-carousel" data-slide-to="2"></li>
                         </ol>
-                        
+
                         <div class="carousel-inner">
                             <div class="item active">
                                 <div class="col-sm-6">
@@ -179,7 +179,7 @@
                                     <img src="{{('public/frontend/images/home/pricing.png')}}"  class="pricing" alt="" />
                                 </div>
                             </div>
-                            
+
                             <div class="item">
                                 <div class="col-sm-6">
                                     <h1><span>E</span>-SHOPPER</h1>
@@ -192,9 +192,9 @@
                                     <img src="{{('public/frontend/images/home/pricing.png')}}" class="pricing" alt="" />
                                 </div>
                             </div>
-                            
+
                         </div>
-                        
+
                         <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
                             <i class="fa fa-angle-left"></i>
                         </a>
@@ -202,12 +202,12 @@
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </section><!--/slider-->
-    
+
     <section>
         <div class="container">
             <div class="row">
@@ -262,7 +262,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -320,7 +320,7 @@
                                 </div>
                             </div>
                         </div><!--/category-products-->
-                    
+
                         <div class="brands_products"><!--brands_products-->
                             <h2>Brands</h2>
                             <div class="brands-name">
@@ -335,7 +335,7 @@
                                 </ul>
                             </div>
                         </div><!--/brands_products-->
-                        
+
                         <div class="price-range"><!--price-range-->
                             <h2>Price Range</h2>
                             <div class="well text-center">
@@ -343,21 +343,21 @@
                                  <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
                             </div>
                         </div><!--/price-range-->
-                        
+
                         <div class="shipping text-center"><!--shipping-->
                             <img src="{{('public/frontend/images/home/shipping.jpg')}}" alt="" />
                         </div><!--/shipping-->
-                    
+
                     </div>
                 </div>
-                
+
                 <div class="col-sm-9 padding-right">
-                    @yield('content') 
+                    @yield('content')
                 </div>
             </div>
         </div>
     </section>
-    
+
     <footer id="footer"><!--Footer-->
         <div class="footer-top">
             <div class="container">
@@ -383,7 +383,7 @@
                                 <h2>24 DEC 2014</h2>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="video-gallery text-center">
                                 <a href="#">
@@ -398,7 +398,7 @@
                                 <h2>24 DEC 2014</h2>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="video-gallery text-center">
                                 <a href="#">
@@ -413,7 +413,7 @@
                                 <h2>24 DEC 2014</h2>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="video-gallery text-center">
                                 <a href="#">
@@ -438,7 +438,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-widget">
             <div class="container">
                 <div class="row">
@@ -500,11 +500,11 @@
                             </form>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
@@ -513,11 +513,11 @@
                 </div>
             </div>
         </div>
-        
-    </footer><!--/Footer-->
-    
 
-  
+    </footer><!--/Footer-->
+
+
+
     <script src="{{asset('public/frontend/js/jquery.js')}}"></script>
     <script src="{{asset('public/frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('public/frontend/js/jquery.scrollUp.min.j')}}s"></script>
