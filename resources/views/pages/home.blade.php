@@ -1,6 +1,7 @@
 @extends('welcome')
 @section('content')
 
+
 <div class="features_items"><!--features_items-->
                         <h2 class="title text-center">Features Items</h2>
                         <div class="col-sm-4">
@@ -155,7 +156,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div><!--features_items-->
 <div class="category-tab"><!--category-tab-->
                         <div class="col-sm-12">
@@ -178,7 +179,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +192,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +205,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -217,12 +218,12 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="blazers" >
                                 <div class="col-sm-3">
                                     <div class="product-image-wrapper">
@@ -233,7 +234,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -246,7 +247,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -259,7 +260,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -272,12 +273,12 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="sunglass" >
                                 <div class="col-sm-3">
                                     <div class="product-image-wrapper">
@@ -288,7 +289,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -301,7 +302,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -314,7 +315,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -327,12 +328,12 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="kids" >
                                 <div class="col-sm-3">
                                     <div class="product-image-wrapper">
@@ -343,7 +344,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -356,7 +357,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -369,7 +370,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -382,12 +383,12 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="poloshirt" >
                                 <div class="col-sm-3">
                                     <div class="product-image-wrapper">
@@ -398,7 +399,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -411,7 +412,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -424,7 +425,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -437,7 +438,7 @@
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -446,10 +447,10 @@
                     </div><!--/category-tab-->
 <div class="recommended_items"><!--recommended_items-->
                         <h2 class="title text-center">recommended items</h2>
-                        
+
                         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="item active">   
+                                <div class="item active">
                                     <div class="col-sm-4">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
@@ -459,7 +460,7 @@
                                                     <p>Easy Polo Black Edition</p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -472,7 +473,7 @@
                                                     <p>Easy Polo Black Edition</p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -485,12 +486,12 @@
                                                     <p>Easy Polo Black Edition</p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">  
+                                <div class="item">
                                     <div class="col-sm-4">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
@@ -500,7 +501,7 @@
                                                     <p>Easy Polo Black Edition</p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -513,7 +514,7 @@
                                                     <p>Easy Polo Black Edition</p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -526,7 +527,7 @@
                                                     <p>Easy Polo Black Edition</p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -537,7 +538,7 @@
                               </a>
                               <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
                                 <i class="fa fa-angle-right"></i>
-                              </a>          
+                              </a>
                         </div>
                     </div><!--/recommended_items-->
 @endsection

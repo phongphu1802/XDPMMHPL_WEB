@@ -24,11 +24,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="log-w3">
     <div class="w3layouts-main">
         <h2>Đăng nhập trang quản lý</h2>
+
         <form action="{{URL :: to('/admin-dashboard')}}" method="post">
             {{ csrf_field() }}
             <input type="text" class="ggg" name="admin_user" placeholder="Tên tài khoản" required="">
+            <?php
+                $messege = Session::get('message');
+                if($messege){
+                    echo $messege;
+                    Session::put('message', null);
+                }
+            ?>
             <input type="password" class="ggg" name="admin_password" placeholder="Mật khẩu" required="">
-            <span><input type="checkbox" /> Nhớ tài khoản</span>
+            <span><input type="checkbox" name="cb_savepassword" value="1"/> Nhớ tài khoản</span>
             <h6><a href="#">Lấy lại mật khẩu?</a></h6>
             <div class="clearfix"></div>
             <input type="submit" value="Đăng nhập" name="login">
