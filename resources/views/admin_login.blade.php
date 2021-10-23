@@ -39,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <span><input type="checkbox" name="cb_savepassword" value="1"/> Nhớ tài khoản</span>
             <h6><a href="#">Lấy lại mật khẩu?</a></h6>
             <div class="clearfix"></div>
-            <input type="submit" value="Đăng nhập" name="login">
+            <input type="submit" value="Đăng nhập" name="sbLogin">
         </form>
 {{--        <p>Don't Have an Account ?<a href="registration.html">Create an account</a></p>--}}
     </div>

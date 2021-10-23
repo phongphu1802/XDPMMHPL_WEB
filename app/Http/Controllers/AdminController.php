@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\account;
 use Illuminate\Http\Request;
 use DB;
 use Session;
 use Cookie;
 use Auth;
+use App\Models\loginmodel;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
+    function __construct(){
+//        $this->loginmodel = $this->model("loginmodel");
+    }
     //Xử lý hiển thị trang login admin
     public function  index(){
         //Kiểm tra cookie
@@ -51,76 +54,48 @@ class AdminController extends Controller
         }
     }
 
-//    //Xử lý kiểm tra thông tin đăng nhập là chính xác hay không
-//    public function  dashboard(Request $request){
-//        //Lấy giá trị request
-//        $admin_user = $request->admin_user;
-//        $admin_password = $request->admin_password;
-//        $admin_save_passwword = $request->cb_savepassword;
-//
-//        //Kiểm tra thông tin đăng nhập có tồn tại không
-//        $result = DB::table('account')->where('account_name',$admin_user)->where('password',$admin_password)->first();
-//
-//        if ($result){
-//            //Kiểm tra người đăng nhập có lưu mật khẩu không
-//            if($admin_save_passwword==1){
-//                Cookie::queue('admin_id_cookie', $result->id,100);//Tạo cookie
-//                Cookie::queue('admin_position_cookie', $result->position_id,100);
-//                return Redirect::to('/dashboard');
-//            }else {
-//                Session::put('admin_id', $result->id);//Tạo session
-//                Session::put('admin_position', $result->position_id);
-//                return Redirect::to('/dashboard');
-//            }
-//        }else{
-//            Session::put('message',"Mật khẩu hoặc tài khoản bị sai.");
-//            return Redirect::to('/admin_login');
-//        }
-//
-//        return view('admin.dashboard');
-//        if(auth::attempt(['account_name'=>$admin_user, 'password'=>$admin_password ])){
-//            if($admin_save_passwword==1){
-//                Cookie::queue('admin_id_cookie', $result->id,100);//Tạo cookie
-//                Cookie::queue('admin_position_cookie', $result->position_id,100);
-//                return Redirect::to('/dashboard');
-//            }else {
-//                Session::put('admin_id', $result->id);//Tạo session
-//                Session::put('admin_position', $result->position_id);
-//                return Redirect::to('/dashboard');
-//            }
-//        }else{
-//            Session::put('message',"Mật khẩu hoặc tài khoản bị sai.");
-//            return Redirect::to('/admin_login');
-//        }
-//    }
-
     //Xử lý kiểm tra thông tin đăng nhập là chính xác hay không
     public function  dashboard(Request $request){
-        //Lấy giá trị request
-        $admin_user = $request->admin_user;
-        $admin_password = $request->admin_password;
-        $admin_save_passwword = $request->cb_savepassword;
-
-        //Kiểm tra thông tin đăng nhập có tồn tại không
-        $result = DB::table('account')->where('account_name',$admin_user)->where('password',$admin_password)->first();
-
-        if ($result){
-            //Kiểm tra người đăng nhập có lưu mật khẩu không
-            if($admin_save_passwword==1){
-                Cookie::queue('admin_id_cookie', $result->id,100);//Tạo cookie
-                Cookie::queue('admin_position_cookie', $result->position_id,100);
-                return Redirect::to('/dashboard');
-            }else {
-                Session::put('admin_id', $result->id);//Tạo session
-                Session::put('admin_position', $result->position_id);
-                return Redirect::to('/dashboard');
+        //Kiểm tra click submit
+        if(isset($request->sbLogin)){
+            //Lấy giá trị request
+            $admin_user = $request->admin_user;
+            $admin_password = $request->admin_password;
+            $admin_save_passwword = $request->cb_savepassword;
+            //Kiểm tra dữ liệu rỗng sẽ trả về trang login
+            if(empty($admin_user)||empty($admin_password)){
+                Session::put('message',"Mật khẩu hoặc tài khoản không đươc rỗng.");
+                return Redirect::to('/admin_login');
             }
-        }else{
-            Session::put('message',"Mật khẩu hoặc tài khoản bị sai.");
-            return Redirect::to('/admin_login');
+            $result=loginmodel::login($admin_user);
+            if(!$result){
+                Session::put('message',"Tài khoản không tồn tại.");
+                return view('admin_login');
+            }else{
+                foreach($result as $row){
+                    //Lấy dữ liệu tài khoản từ database
+                    $id=$row->id;
+                    $position=$row->position_id;
+                    $password=$row->password;
+                }
+                //Kiểm tra mật khẩu có đúng không
+                if(password_verify($admin_password,$password)){
+                    //Kiểm tra người dùng có chọn lưu mật khẩu không
+                    if($admin_save_passwword==1){
+                        Cookie::queue('admin_id_cookie', $id,100);//Tạo cookie
+                        Cookie::queue('admin_position_cookie', $position,100);
+                        return Redirect::to('/dashboard');
+                    }else{
+                        Session::put('admin_id', $id);//Tạo session
+                        Session::put('admin_position', $position);
+                        return Redirect::to('/dashboard');
+                    }
+                }else{
+                    Session::put('message',"Sai mật khẩu.");
+                    return view('admin_login');
+                }
+            }
         }
-
-        return view('admin.dashboard');
     }
 
     //Xử lý đăng xuát khỏi trang admin
