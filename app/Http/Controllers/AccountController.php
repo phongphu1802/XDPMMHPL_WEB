@@ -2,84 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\account;
+use App\Models\AccountModel;
+use Session;
+use Cookie;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+
+    public function account_manage (){
+        $resultAccount = AccountModel::account_manage();
+        //Lấy thông tin tài khoản
+        $arAccount = array();
+        foreach ($resultAccount as $row){
+            $arAccount[] = array($row->id,$row->title_name,$row->account_name,$row->password,$row->status);
+        }
+        return $arAccount;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function account_customer (){
+        $resultAccount = AccountModel::account_customer();
+        //Lấy thông tin tài khoản
+        $arAccount = array();
+        foreach ($resultAccount as $row){
+            $arAccount[] = array($row->id,$row->title_name,$row->account_name,$row->password,$row->status);
+        }
+        return $arAccount;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    //Xử lý hiện giao điện quản lý tài khoản
+    public function account_management()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function show(account $account)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(account $account)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, account $account)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(account $account)
-    {
-        //
+        if(CheckController::check_session()) {
+            $admin_position = Session::get('admin_position');
+            $id = Session::get('admin_id');
+            return view('admin.account_management')
+                ->with('arPermission', AdminController::permission($admin_position))
+                ->with('arStaff', AdminController::staff($id))
+                ->with('arAccountManage', $this->account_manage())
+                ->with('arAccountCustomer', $this->account_customer());
+        }else{
+            return view('admin_login');
+        }
     }
 }
