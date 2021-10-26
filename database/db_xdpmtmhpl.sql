@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 21, 2021 lúc 07:35 AM
+-- Thời gian đã tạo: Th10 26, 2021 lúc 04:21 AM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 7.3.27
 
@@ -31,17 +31,18 @@ CREATE TABLE `account` (
   `id` int(11) NOT NULL,
   `position_id` int(11) DEFAULT NULL,
   `account_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `account`
 --
 
-INSERT INTO `account` (`id`, `position_id`, `account_name`, `password`) VALUES
-(1, 2, 'admin', 'admin'),
-(2, 3, 'qlcuahang1', '123456'),
-(3, 1, 'khachhang1', '123456');
+INSERT INTO `account` (`id`, `position_id`, `account_name`, `password`, `status`) VALUES
+(1, 2, 'admin', '$2y$04$RAgrqc5BiKDi6L8uxgmTROP8AYAaaADqCIXTOibIorTavU3VWrnMK', 1),
+(2, 3, 'qlcuahang1', '$2y$04$/MMZA5/P5aadV8xTSEdsjOn7fmp1S/u1exCHlxW9a0bPGFwoPruaO', 1),
+(3, 1, 'khachhang1', '$2y$04$/MMZA5/P5aadV8xTSEdsjOn7fmp1S/u1exCHlxW9a0bPGFwoPruaO', 1);
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,7 @@ CREATE TABLE `order_details` (
 CREATE TABLE `permission` (
   `id` int(11) NOT NULL,
   `title_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `status` int(11) DEFAULT NULL
+  `status` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -154,19 +155,19 @@ CREATE TABLE `permission` (
 --
 
 INSERT INTO `permission` (`id`, `title_name`, `status`) VALUES
-(1, 'Thống kê báo cáo', 1),
-(2, 'Quản lý bình luận', 1),
-(3, 'Quản lý đặt hàng', 1),
-(4, 'Quản lý hóa đơn', 1),
-(5, 'Quản lý nhân viên', 1),
-(6, 'Quản lý thành viên', 1),
-(7, 'Quản lý sản phẩm', 1),
-(8, 'Quản lý nhà cung cấp', 1),
-(9, 'Quản lý danh mục sản phẩm', 1),
-(10, 'Quản lý bảo hành', 1),
-(11, 'Quản lý Khuyến mãi', 1),
-(12, 'Quản lý tài khoản', 1),
-(13, 'Quản lý phân quyền', 1);
+(1, 'Thống kê báo cáo', 'fa fa-bar-chart-o'),
+(2, 'Quản lý bình luận', 'fa fa-inbox'),
+(3, 'Quản lý đặt hàng', 'fa fa-cart-plus'),
+(4, 'Quản lý hóa đơn', 'fa fa-th-list'),
+(5, 'Quản lý nhân viên', 'fa fa-user'),
+(6, 'Quản lý thành viên', 'fa fa-users'),
+(7, 'Quản lý sản phẩm', 'fa fa-shopping-basket'),
+(8, 'Quản lý nhà cung cấp', 'fa fa-truck'),
+(9, 'Quản lý danh mục sản phẩm', 'fa fa-list'),
+(10, 'Quản lý bảo hành', 'fa fa-wrench'),
+(11, 'Quản lý Khuyến mãi', 'fa fa-cubes'),
+(12, 'Quản lý tài khoản', 'fa fa-th-list'),
+(13, 'Quản lý phân quyền', 'fa fa-th-list');
 
 -- --------------------------------------------------------
 
@@ -185,7 +186,7 @@ CREATE TABLE `position` (
 --
 
 INSERT INTO `position` (`id`, `title_name`, `status`) VALUES
-(1, 'KHACHHANG', 1),
+(1, 'KHÁCH HÀNG', 1),
 (2, 'ADMIN', 1),
 (3, 'QUẢN LÝ', 1);
 
@@ -326,7 +327,8 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `account_id`, `surname`, `firstname`, `dateofbirth`, `phonenumber`, `address`, `email`, `status`) VALUES
-(1, 2, 'Nguyễn Phong', 'Phú', '2000-02-18', '0367945523', '30/10 Lê Văn Quới', 'phongphunguyen7575@gmail.com', 1);
+(1, 1, 'ADMIN', NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 2, 'Nguyễn Phong', 'Phú', '2000-02-18', '0367945523', '30/10 Lê Văn Quới', 'phongphunguyen7575@gmail.com', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
