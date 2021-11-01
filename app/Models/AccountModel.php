@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\DB;
 class AccountModel extends Model
 {
     //Tìm thông tin tài khoản
+    protected $table = "staff";
     public function account_information ($account_id){
-        return DB::select('select * from staff where account_id = :account_id', ['account_id' => $account_id]);
+//        return DB::select('select * from staff where account_id = :account_id', ['account_id' => $account_id]);
+        return AccountModel::where('account_id',$account_id)->get();
     }
 
     public function account_manage(){

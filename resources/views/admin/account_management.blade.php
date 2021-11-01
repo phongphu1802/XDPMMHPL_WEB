@@ -41,7 +41,6 @@
                         <th>Mã tài khoản</th>
                         <th>Quyền tài khoản</th>
                         <th>Tên tài khoản</th>
-                        <th>Mật khẩu</th>
                         <th>Trạng thái</th>
                         <th style="width:30px;"></th>
                     </tr>
@@ -53,7 +52,6 @@
                         <td>{{$arraycolumn[0]}}</td>
                         <td><span class="text-ellipsis">{{$arraycolumn[1]}}</span></td>
                         <td><span class="text-ellipsis">{{$arraycolumn[2]}}</span></td>
-                        <td><span class="text-ellipsis">{{$arraycolumn[3]}}</span></td>
                         <td><span class="text-ellipsis">{{$arraycolumn[4]}}</span></td>
                         <td>
                             <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
@@ -120,7 +118,6 @@
                     <th>Mã tài khoản</th>
                     <th>Quyền tài khoản</th>
                     <th>Tên tài khoản</th>
-                    <th>Mật khẩu</th>
                     <th>Trạng thái</th>
                     <th style="width:30px;"></th>
                 </tr>
@@ -132,7 +129,6 @@
                         <td>{{$arraycolumn[0]}}</td>
                         <td><span class="text-ellipsis">{{$arraycolumn[1]}}</span></td>
                         <td><span class="text-ellipsis">{{$arraycolumn[2]}}</span></td>
-                        <td><span class="text-ellipsis">{{$arraycolumn[3]}}</span></td>
                         <td><span class="text-ellipsis">{{$arraycolumn[4]}}</span></td>
                         <td>
                             <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>

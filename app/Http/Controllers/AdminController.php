@@ -71,7 +71,11 @@ class AdminController extends Controller
                 return view('admin_login');
             } else {
                 $id=Session::get('admin_id');
-                return view('admin.dashboard')->with('arPermission', $this->permission($admin_position))->with('arStaff', $this->staff($id));
+//                return view('admin.dashboard')->with('arPermission', $this->permission($admin_position))->with('arStaff', $this->staff($id));
+                return view('admin.dashboard',[
+                    'arPermission' => $this->permission($admin_position),
+                    'arStaff'=>$this->staff($id)
+                ]);
             }
         }else{
             return view('admin_login');
@@ -121,7 +125,8 @@ class AdminController extends Controller
         //Lấy thông tin cá nhân
         $resultStaff=AccountModel::account_information ($staff);
         foreach ($resultStaff as $row){
-            $arStaff = array($row->id,$row->surname,$row->firstname,$row->dateofbirth,$row->phonenumber,$row->email,$row->status);
+            $arStaff = array($row->id,
+                $row->surname,$row->firstname,$row->dateofbirth,$row->phonenumber,$row->email,$row->status);
         }
         return $arStaff;
     }
