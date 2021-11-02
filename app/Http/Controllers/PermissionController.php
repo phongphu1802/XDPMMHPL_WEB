@@ -14,9 +14,7 @@ class PermissionController extends Controller
         if(CheckController::check_session()) {
             $admin_position = Session::get('admin_position');
             $id = Session::get('admin_id');
-            return view('admin.permission_management')
-                ->with('arPermission', AdminController::permission($admin_position))
-                ->with('arStaff', AdminController::staff($id));
+            return view('admin.permission_management');
 //                ->with('arAccountManage', $this->account_manage())
 //                ->with('arAccountCustomer', $this->account_customer());
         }else{

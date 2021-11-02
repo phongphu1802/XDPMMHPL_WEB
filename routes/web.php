@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminMenuLeftController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AccountController;
@@ -29,25 +29,25 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/home',[HomeController::class, 'index']);
 //Backend;
 //Route::get('/admin',[AdminController::class, 'decentralization']);
-Route::get('/dashboard',[AdminController::class, 'decentralization']);
-Route::get('/logout',[AdminController::class, 'logout']);
-Route::post('/admin-dashboard',[AdminController::class, 'check_login']);
+Route::get('/dashboard',[LoginController::class, 'decentralization']);
+Route::get('/logout',[LoginController::class, 'logout']);
+Route::post('/admin-dashboard',[LoginController::class, 'check_login']);
 
-Route::get('/admin',[AdminController::class, 'decentralization']);
+Route::get('/admin',[LoginController::class, 'decentralization']);
 
 Route::prefix('admin')->group(function () {
-    Route::get('',[AdminController::class, 'decentralization']);
-    Route::get('/1',[AdminController::class, 'decentralization']);
-    Route::get('/2',[AdminController::class, 'decentralization']);
-    Route::get('/3',[AdminController::class, '']);
-    Route::get('/4',[AdminController::class, '']);
-    Route::get('/5',[AdminController::class, '']);
-    Route::get('/6',[AdminController::class, '']);
-    Route::get('/7',[AdminController::class, '']);
-    Route::get('/8',[AdminController::class, '']);
-    Route::get('/9',[AdminController::class, '']);
-    Route::get('/10',[AdminController::class, '']);
-    Route::get('/11',[AdminController::class, '']);
+    Route::get('',[LoginController::class, 'decentralization']);
+    Route::get('/1',[LoginController::class, 'decentralization']);
+    Route::get('/2',[LoginController::class, 'decentralization']);
+    Route::get('/3',[LoginController::class, '']);
+    Route::get('/4',[LoginController::class, '']);
+    Route::get('/5',[LoginController::class, '']);
+    Route::get('/6',[LoginController::class, '']);
+    Route::get('/7',[LoginController::class, '']);
+    Route::get('/8',[LoginController::class, '']);
+    Route::get('/9',[LoginController::class, '']);
+    Route::get('/10',[LoginController::class, '']);
+    Route::get('/11',[LoginController::class, '']);
     Route::get('/12',[AccountController::class, 'account_management']);
     Route::get('/13',[PermissionController::class, 'permission_management']);
 });

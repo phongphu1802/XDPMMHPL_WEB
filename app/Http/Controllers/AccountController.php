@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-
     public function account_manage (){
         $resultAccount = AccountModel::account_manage();
         //Lấy thông tin tài khoản
@@ -37,8 +36,6 @@ class AccountController extends Controller
             $admin_position = Session::get('admin_position');
             $id = Session::get('admin_id');
             return view('admin.account_management')
-                ->with('arPermission', AdminController::permission($admin_position))
-                ->with('arStaff', AdminController::staff($id))
                 ->with('arAccountManage', $this->account_manage())
                 ->with('arAccountCustomer', $this->account_customer());
         }else{

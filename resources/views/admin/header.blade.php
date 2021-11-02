@@ -196,6 +196,9 @@
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="images/2.png">
+                <?php
+                $arStaff = Session::get('arStaff');
+                ?>
                 <span class="username">{{$arStaff[1]}} {{$arStaff[2]}}</span>
                 <b class="caret"></b>
             </a>

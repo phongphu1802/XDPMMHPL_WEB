@@ -7,10 +7,10 @@ use Session;
 use Cookie;
 use Auth;
 use App\Models\loginmodel;
-use App\Models\AccountModel;
+use App\Models\StaffModel;
 use Illuminate\Support\Facades\Redirect;
 
-class AdminController extends Controller
+class LoginController extends Controller
 {
     //Xử lý kiểm tra thông tin đăng nhập là chính xác hay không
     public function  check_login(Request $request){
@@ -71,11 +71,10 @@ class AdminController extends Controller
                 return view('admin_login');
             } else {
                 $id=Session::get('admin_id');
-//                return view('admin.dashboard')->with('arPermission', $this->permission($admin_position))->with('arStaff', $this->staff($id));
-                return view('admin.dashboard',[
-                    'arPermission' => $this->permission($admin_position),
-                    'arStaff'=>$this->staff($id)
-                ]);
+                //Tạo session quyền và thông tin cá nhân
+                $this->permission($admin_position);
+                $this->staff($id);
+                return view('admin.dashboard');
             }
         }else{
             return view('admin_login');
@@ -88,12 +87,12 @@ class AdminController extends Controller
         if(CheckController::check_session()) {
             Session::forget('admin_id');//Xóa session
             Session::forget('admin_position');
+            Session::forget('arPermission');
+            Session::forget('arStaff');
         }
         //Kiểm tra cookie có thì xóa đi
         if(CheckController::check_cookie()){
-//            Cookie::forget('admin_id_cookie');//Xóa cookie
-//            Cookie::forget('admin_position_cookie');
-            Cookie::queue('admin_id_cookie', null,10);//Tạo cookie
+            Cookie::queue('admin_id_cookie', null,10);//Xóa cookie
             Cookie::queue('admin_position_cookie', null,10);
         }
         return view('admin_login');
@@ -111,23 +110,22 @@ class AdminController extends Controller
 
     //Tìm kiếm phân quyền
     public function permission($permission){
-        $resultPermission=loginmodel::decentralization($permission);
+        $resultPermission = LoginModel::decentralization($permission);
         //Lấy thông tin quyền
         $arPermission= array();
         foreach ($resultPermission as $row){
             $arPermission[] = array($row->id,$row->title_name,$row->status);
         }
-        return $arPermission;
+        Session::put('arPermission', $arPermission);//Tạo session
     }
 
     //Tìm kiếm thông tin
     public function staff($staff){
         //Lấy thông tin cá nhân
-        $resultStaff=AccountModel::account_information ($staff);
+        $resultStaff = StaffModel::staff_information ($staff);
         foreach ($resultStaff as $row){
-            $arStaff = array($row->id,
-                $row->surname,$row->firstname,$row->dateofbirth,$row->phonenumber,$row->email,$row->status);
+            $arStaff = array($row->id,$row->surname,$row->firstname,$row->dateofbirth,$row->phonenumber,$row->email,$row->status);
         }
-        return $arStaff;
+        Session::put('arStaff', $arStaff);//Tạo session
     }
 }
