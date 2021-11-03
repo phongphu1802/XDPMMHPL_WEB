@@ -33,8 +33,6 @@ class AccountController extends Controller
     public function account_management()
     {
         if(CheckController::check_session()) {
-            $admin_position = Session::get('admin_position');
-            $id = Session::get('admin_id');
             return view('admin.account_management')
                 ->with('arAccountManage', $this->account_manage())
                 ->with('arAccountCustomer', $this->account_customer());

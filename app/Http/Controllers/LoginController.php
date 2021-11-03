@@ -98,7 +98,6 @@ class LoginController extends Controller
         return view('admin_login');
     }
 
-
     //Đăng nhập tài khoản với cookie đang có
     public function login_cookie(){
         //Lấy cookie
