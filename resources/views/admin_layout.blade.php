@@ -12,21 +12,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Custom CSS -->
     <link href="{{URL::asset('backend/css/style.css')}}" rel='stylesheet' type='text/css' />
     <link href="{{URL::asset('backend/css/style-responsive.css')}}" rel="stylesheet"/>
-    <link href="{{URL::asset('backend/css/bootstrap-table.css')}}" rel="stylesheet">
+    <!-- Table -->
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <!-- //Table -->
     <!-- font CSS -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="{{URL::asset('backend/css/font.css')}}" type="text/css"/>
-    <link href="{{URL::asset('backend/css/font-awesome.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{URL::asset('backend/css/morris.css')}}'" type="text/css"/>
-    <!-- calendar -->
-    <link rel="stylesheet" href="{{URL::asset('backend/css/monthly.css')}}">
-    <!-- //calendar -->
+        <link rel="stylesheet" href="{{URL::asset('backend/css/font.css')}}" type="text/css"/>
+        <link href="{{URL::asset('backend/css/font-awesome.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{URL::asset('backend/css/morris.css')}}'" type="text/css"/>
+        <!-- calendar -->
+            <link rel="stylesheet" href="{{URL::asset('backend/css/monthly.css')}}">
+        <!-- //calendar -->
     <!-- //font-awesome icons -->
     <script src="{{URL::asset('backend/js/jquery2.0.3.min.js')}}"></script>
     <script src="{{URL::asset('backend/js/raphael-min.js')}}"></script>
     <script src="{{URL::asset('backend/js/morris.js')}}"></script>
-    <script src="{{URL::asset('backend/js/bootstrap-table.js')}}"></script>
+    <!-- Table -->
+        <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="{{URL::asset('backend/js/scripttable.js')}}"></script>
+    <!-- //Table -->
 </head>
 <body>
 <section id="container">

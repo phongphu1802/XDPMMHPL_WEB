@@ -1,34 +1,50 @@
 @extends('admin_layout')
 @section('admin_content')
-
-    {{--------------------------------------------------------------------------------------------------------------------}}
-    {{--Quản lý tài khoản nhân viên--}}
 <div class="table-agile-info">
+    <form method="get" action="{{URL::to('admin/13/add')}}">
+        <button type="submit" class="btn btn-warning" id="add_position" onClick="">Thêm tài khoản mới</button>
+    </form>
+</div>
+{{--------------------------------------------------------------------------------------------------------------------}}
+{{--Quản lý tài khoản nhân viên--}}
+<div class="table-agile-info" style="margin-top: 10px">
     <div class="panel panel-default">
         <div class="panel-heading">
             Quản lý tài khoản nhân viên
         </div>
         <div class="panel-body">
-            <table class="table table-striped b-t b-light" >
-{{--            <table class="table" data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">--}}
+            <table id="table_account_manage" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th data-sortable="true">Mã tài khoản</th>
-                        <th data-sortable="true">Quyền tài khoản</th>
-                        <th data-sortable="true">Tên tài khoản</th>
-                        <th data-sortable="true">Trạng thái</th>
-                        <th style="width:30px;"></th>
+                        <th>Mã tài khoản</th>
+                        <th>Quyền tài khoản</th>
+                        <th>Tên tài khoản</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($arAccountManage as $arraycolumn)
                     <tr>
-                        <td data-sortable="true">{{$arraycolumn[0]}}</td>
-                        <td data-sortable="true"><span class="text-ellipsis">{{$arraycolumn[1]}}</span></td>
-                        <td data-sortable="true"><span class="text-ellipsis">{{$arraycolumn[2]}}</span></td>
-                        <td data-sortable="true"><span class="text-ellipsis">{{$arraycolumn[4]}}</span></td>
-                        <td data-sortable="true">
-                            <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                        <td>{{$arraycolumn[0]}}</td>
+                        <td><span class="text-ellipsis">{{$arraycolumn[1]}}</span></td>
+                        <td><span class="text-ellipsis">{{$arraycolumn[2]}}</span></td>
+                        <!-- Kiểm tra trạng thái tài khoản -->
+                        @if($arraycolumn[4]==1)
+                            <td><span class="text-ellipsis" style="color: green;">Đang hoạt động </span></td>
+                        @elseif($arraycolumn[4]==0)
+                            <td><span class="text-ellipsis" style="color: red;">Đang khóa</span></td>
+                        @endif
+                        <td>
+                            @if($arraycolumn[4]==1)
+                                <form method="post" action="{{URL::to('admin/12/hidden')}}">
+                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa tài khoản" name="id" value="" id="id" type="submit"><i class="fa fa-lock" ></i></button>
+                                </form>
+                            @elseif($arraycolumn[4]==0)
+                                <form method="post" action="{{URL::to('admin/12/unhidden')}}">
+                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở tài khoản" name="id" value="" id="id" type="submit"><i class="fa fa-unlock" ></i></button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -43,75 +59,47 @@
 <div class="table-agile-info" style="margin-top: 10px">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Quản lý tài khoản Khách hàng
+            Quản lý tài khoản khách hàng
         </div>
-        <div class="row w3-res-tb">
-            <div class="col-sm-5 m-b-xs">
-                <select class="input-sm form-control w-sm inline v-middle">
-                    <option value="0">Bulk action</option>
-                    <option value="1">Delete selected</option>
-                    <option value="2">Bulk edit</option>
-                    <option value="3">Export</option>
-                </select>
-                <button class="btn btn-sm btn-default">Apply</button>
-            </div>
-            <div class="col-sm-4">
-            </div>
-            <div class="col-sm-3">
-                <div class="input-group">
-                    <input type="text" class="input-sm form-control" placeholder="Search">
-                    <span class="input-group-btn">
-                        <button class="btn btn-sm btn-default" type="button">Go!</button>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped b-t b-light">
+        <div class="panel-body">
+            <table id="table_account_customer" class="display" style="width:100%">
                 <thead>
                 <tr>
-                    <th style="width:20px;">
-                        <label class="i-checks m-b-none">
-                            <input type="checkbox"><i></i>
-                        </label>
-                    </th>
                     <th>Mã tài khoản</th>
                     <th>Quyền tài khoản</th>
                     <th>Tên tài khoản</th>
                     <th>Trạng thái</th>
-                    <th style="width:30px;"></th>
+                    <th>Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($arAccountCustomer as $arraycolumn)
                     <tr>
-                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
                         <td>{{$arraycolumn[0]}}</td>
                         <td><span class="text-ellipsis">{{$arraycolumn[1]}}</span></td>
                         <td><span class="text-ellipsis">{{$arraycolumn[2]}}</span></td>
-                        <td><span class="text-ellipsis">{{$arraycolumn[4]}}</span></td>
+                        <!-- Kiểm tra trạng thái hoạt động -->
+                        @if($arraycolumn[4]==1)
+                            <td><span class="text-ellipsis" style="color: green;">Đang hoạt động </span></td>
+                        @elseif($arraycolumn[4]==0)
+                            <td><span class="text-ellipsis" style="color: red;">Đang khóa</span></td>
+                        @endif
                         <td>
-                            <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                            @if($arraycolumn[4]==1)
+                                <form method="post" action="{{URL::to('admin/12/hidden')}}">
+                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa tài khoản" name="id" value="" id="id" type="submit"><i class="fa fa-lock" ></i></button>
+                                </form>
+                            @elseif($arraycolumn[4]==0)
+                                <form method="post" action="{{URL::to('admin/12/unhidden')}}">
+                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở tài khoản" name="id" value="" id="id" type="submit"><i class="fa fa-unlock" ></i></button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
-        <footer class="panel-footer">
-            <div class="row">
-                <div class="col-sm-7 text-right text-center-xs">
-                    <ul class="pagination pagination-sm m-t-none m-b-none">
-                        <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
     </div>
 </div>
 @endsection

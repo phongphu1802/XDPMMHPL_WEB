@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminMenuLeftController;
-use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\Position_PermissionController;
 use App\Http\Controllers\AccountController;
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +48,23 @@ Route::prefix('admin')->group(function () {
     Route::get('/9',[LoginController::class, '']);
     Route::get('/10',[LoginController::class, '']);
     Route::get('/11',[LoginController::class, '']);
-    Route::get('/12',[AccountController::class, 'account_management']);
-    Route::get('/13',[PermissionController::class, 'permission_management']);
+    Route::prefix('/12')->group(function () {
+        Route::get('',[AccountController::class, 'account_management']);
+        Route::get('/add',[AccountController::class, 'account_management']);
+        Route::post('/hidden',[AccountController::class, 'hidden_account']);
+        Route::post('/unhidden',[AccountController::class, 'unhidden_account']);
+    });
+
+    Route::prefix('/13')->group(function () {
+                Route::get('',[Position_PermissionController::class, 'permission_management']);
+        Route::get('/add',[Position_PermissionController::class, 'add_position_permission']);
+        Route::post('/add-save',[Position_PermissionController::class, 'repair_save_position_permission']);
+        Route::get('/hidden',[Position_PermissionController::class, 'hidden_position_permission']);
+        Route::get('/unhidden',[Position_PermissionController::class, 'unhidden_position_permission']);
+        Route::get('/unhidden-save',[Position_PermissionController::class, 'unhidden_save_position_permission']);
+        Route::get('/repair',[Position_PermissionController::class, 'repair_position_permission']);
+        Route::post('/repair-save',[Position_PermissionController::class, 'repair_save_position_permission']);
+        
+    });
+//    Route::get('/13',[PermissionController::class, 'permission_management']);
 });

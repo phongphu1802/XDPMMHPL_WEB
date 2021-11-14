@@ -5,95 +5,62 @@
             <div class="panel-heading">
                 Quản lý quyền
             </div>
-            <div>
-                <table class="table" ui-jq="footable" ui-options='{
-                    "paging": {
-                      "enabled": true
-                  },
-                  "filtering": {
-                      "enabled": true
-                  },
-                  "sorting": {
-                      "enabled": true
-                  }}'>
-                    <thead>
+            <form method="get" action="{{URL::to('admin/13/add')}}">
+                <button type="submit" class="btn btn-warning" id="add_position" onClick="" style="margin-top: 10px;margin-left: 10px; float: left" >Thêm quyền mới</button>
+            </form>
+            <form method="get" action="{{URL::to('admin/13/unhidden')}}">
+            <button type="submit" class="btn btn-warning" id="open_position" onClick="" style="margin-top: 10px;margin-left: 10px; float: left">Mở quyền đã ẩn</button>
+            </form>
+        <div>
+            <div class="panel-body" style="margin-top: 40px">
+                <table id="table_position_permission" class="display" style="width:100%">
+                  <thead>
                     <tr>
-                        <th data-breakpoints="xs">ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th data-breakpoints="xs">Job Title</th>
+                        <th></th>
+                        @foreach($arPosition as $arrayPosition)
+                            @if($arrayPosition->status==1)
+                                <th>{{$arrayPosition->title_name}}
+                                    <form method="get" action="{{URL::to('admin/13/repair')}}">
+                                        <button class="btn btn-info btn-sm" style="float: left" title="Chỉnh sửa thông tin quyền" name="id" value="{{$arrayPosition->id}}" id="{{$arrayPosition->id}}" type="submit"><i class="fa fa-edit"></i></button>
+                                    </form>
 
-                        <th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th>
+                                    <form method="get" action="{{URL::to('admin/13/hidden')}}">
+                                        <button class="btn btn-danger btn-sm" style="float: left; margin-left: 5px" title="Ẩn quyền" name="id" value="{{$arrayPosition->id}}" id="id" type="submit"><i class="fa fa-lock" ></i></button>
+                                    </form>
+                                </th>
+                            @endif
+                        @endforeach
                     </tr>
-                    </thead>
-                    <tbody>
-                    <tr data-expanded="true">
-                        <td>1</td>
-                        <td>Dennise</td>
-                        <td>Fuhrman</td>
-                        <td>High School History Teacher</td>
-
-                        <td>July 25th 1960</td>
-                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($arPermission as $arrayPermission)
                     <tr>
-                        <td>2</td>
-                        <td>Elodia</td>
-                        <td>Weisz</td>
-                        <td>Wallpaperer Helper</td>
-
-                        <td>March 30th 1982</td>
+                        <td>{{$arrayPermission->title_name}}</td>
+                        <?php
+                        /** @var TYPE_NAME $arPosition_Permission */
+                        /** @var TYPE_NAME $arrayPermission */
+                        /** @var TYPE_NAME $arPosition */
+                        /** @var TYPE_NAME $temp */
+                        $temp = $arPosition->count();
+                        for($i=1; $i<=$temp; $i++){
+                            //Kiểm tra trạng thái của quyềnn đang ẩn hay hiên
+                            if($arPosition->where('id',$i)->where('status',1)->count()){
+                                //Kiểm tra dữ liệu của từng row tương ứng với collum
+                                $filtered1 = $arPosition_Permission->where('permission_id',$arrayPermission->id)->where('position_id',$i);
+                                if($filtered1->count()!=0){
+                                    echo '<td><i class="fa fa-check" aria-hidden="true" style="color: green;"></i></td>';
+                                }else{
+                                    echo '<td><i class="fa fa-times" aria-hidden="true" style="color: red;"></i></td>';
+                                }
+                            }
+                        }
+                        ?>
                     </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Raeann</td>
-                        <td>Haner</td>
-                        <td>Internal Medicine Nurse Practitioner</td>
-
-                        <td>February 26th 1966</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Junie</td>
-                        <td>Landa</td>
-                        <td>Offbearer</td>
-
-                        <td>March 29th 1966</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Solomon</td>
-                        <td>Bittinger</td>
-                        <td>Roller Skater</td>
-
-                        <td>September 22nd 1964</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Bar</td>
-                        <td>Lewis</td>
-                        <td>Clown</td>
-
-                        <td>August 4th 1991</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Usha</td>
-                        <td>Leak</td>
-                        <td>Ships Electronic Warfare Officer</td>
-
-                        <td>November 20th 1979</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Lorriane</td>
-                        <td>Cooke</td>
-                        <td>Technical Services Librarian</td>
-
-                        <td>April 7th 1969</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         </div>
     </div>
+</div>
 @endsection
