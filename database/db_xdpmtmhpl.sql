@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2021 lúc 04:21 AM
+-- Thời gian đã tạo: Th10 15, 2021 lúc 06:13 AM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 7.3.27
 
@@ -41,7 +41,7 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`id`, `position_id`, `account_name`, `password`, `status`) VALUES
 (1, 2, 'admin', '$2y$04$RAgrqc5BiKDi6L8uxgmTROP8AYAaaADqCIXTOibIorTavU3VWrnMK', 1),
-(2, 3, 'qlcuahang1', '$2y$04$/MMZA5/P5aadV8xTSEdsjOn7fmp1S/u1exCHlxW9a0bPGFwoPruaO', 1),
+(2, 3, 'qlcuahang1', '$2y$04$/MMZA5/P5aadV8xTSEdsjOn7fmp1S/u1exCHlxW9a0bPGFwoPruaO', 0),
 (3, 1, 'khachhang1', '$2y$04$/MMZA5/P5aadV8xTSEdsjOn7fmp1S/u1exCHlxW9a0bPGFwoPruaO', 1);
 
 -- --------------------------------------------------------
@@ -188,7 +188,8 @@ CREATE TABLE `position` (
 INSERT INTO `position` (`id`, `title_name`, `status`) VALUES
 (1, 'KHÁCH HÀNG', 1),
 (2, 'ADMIN', 1),
-(3, 'QUẢN LÝ', 1);
+(3, 'QUẢN LÝ', 1),
+(4, 'FULL QUYỀN', 1);
 
 -- --------------------------------------------------------
 
@@ -218,7 +219,20 @@ INSERT INTO `position_permission` (`permission_id`, `position_id`) VALUES
 (8, 3),
 (9, 3),
 (10, 3),
-(11, 3);
+(11, 3),
+(1, 4),
+(2, 4),
+(3, 4),
+(4, 4),
+(5, 4),
+(6, 4),
+(7, 4),
+(8, 4),
+(9, 4),
+(10, 4),
+(11, 4),
+(12, 4),
+(13, 4);
 
 -- --------------------------------------------------------
 
@@ -327,7 +341,7 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `account_id`, `surname`, `firstname`, `dateofbirth`, `phonenumber`, `address`, `email`, `status`) VALUES
-(1, 1, 'ADMIN', NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 'ADMIN', NULL, NULL, NULL, NULL, NULL, 1),
 (2, 2, 'Nguyễn Phong', 'Phú', '2000-02-18', '0367945523', '30/10 Lê Văn Quới', 'phongphunguyen7575@gmail.com', 1);
 
 --
@@ -472,7 +486,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT cho bảng `position`
 --
 ALTER TABLE `position`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
