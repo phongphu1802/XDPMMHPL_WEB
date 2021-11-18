@@ -1,9 +1,7 @@
 @extends('admin_layout')
 @section('admin_content')
 <div class="table-agile-info">
-    <form method="get" action="{{URL::to('admin/13/add')}}">
-        <button type="submit" class="btn btn-warning" id="add_position" onClick="">Thêm tài khoản mới</button>
-    </form>
+    <a href="{{URL::to('admin/12/add')}}"><button type="submit" class="btn btn-warning" id="add_position">Thêm tài khoản mới</button></a>
 </div>
 {{--------------------------------------------------------------------------------------------------------------------}}
 {{--Quản lý tài khoản nhân viên--}}
@@ -34,15 +32,19 @@
                             <td><span class="text-ellipsis" style="color: green;">Đang hoạt động </span></td>
                         @elseif($arraycolumn[4]==0)
                             <td><span class="text-ellipsis" style="color: red;">Đang khóa</span></td>
+                        @elseif($arraycolumn[4]==2)
+                            <td><span class="text-ellipsis" style="color: red;">Tài khoản đang trống</span></td>
                         @endif
                         <td>
                             @if($arraycolumn[4]==1)
                                 <form method="post" action="{{URL::to('admin/12/hidden')}}">
-                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa tài khoản" name="id" value="" id="id" type="submit"><i class="fa fa-lock" ></i></button>
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa tài khoản" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fa fa-lock" ></i></button>
                                 </form>
                             @elseif($arraycolumn[4]==0)
                                 <form method="post" action="{{URL::to('admin/12/unhidden')}}">
-                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở tài khoản" name="id" value="" id="id" type="submit"><i class="fa fa-unlock" ></i></button>
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở tài khoản" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fa fa-unlock" ></i></button>
                                 </form>
                             @endif
                         </td>
@@ -87,11 +89,13 @@
                         <td>
                             @if($arraycolumn[4]==1)
                                 <form method="post" action="{{URL::to('admin/12/hidden')}}">
-                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa tài khoản" name="id" value="" id="id" type="submit"><i class="fa fa-lock" ></i></button>
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa tài khoản" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fa fa-lock" ></i></button>
                                 </form>
                             @elseif($arraycolumn[4]==0)
                                 <form method="post" action="{{URL::to('admin/12/unhidden')}}">
-                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở tài khoản" name="id" value="" id="id" type="submit"><i class="fa fa-unlock" ></i></button>
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở tài khoản" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fa fa-unlock" ></i></button>
                                 </form>
                             @endif
                         </td>

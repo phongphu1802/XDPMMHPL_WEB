@@ -28,7 +28,8 @@
                     <tr data-expanded="true">
                         <td data-sortable="true">{{$values->title_name}}</td>
                         <td data-sortable="true">
-                           <form method="get" action="{{URL::to('admin/13/unhidden-save')}}">
+                           <form method="post" action="{{URL::to('admin/13/unhidden-save')}}">
+                              {{ csrf_field() }}
                               <button class="btn btn-danger btn-sm" style="float: left" title="Mở khóa quyền" name="id" value="{{$values->id}}" id="{{$values->id}}" type="submit"><i class="fa fa-unlock"></i></button>
                            </form>
                         </td>

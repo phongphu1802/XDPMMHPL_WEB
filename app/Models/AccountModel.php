@@ -30,4 +30,19 @@ class AccountModel extends Model
     {
         DB::update('update account set status = ? where id = ?',[$status,$account_id]);
     }
+
+    //Select id max của table account
+    //Input: Null
+    //Output: Trả về id max của account
+    public function select_account_end(){
+        return DB::table('account')->orderBy('id','ASC')->get()->pluck('id')->last();
+    }
+
+    //Insert account
+    //Input: $id, $position_id, $account_name, $password, $status
+    //Output: null
+    public function insert($id, $position_id, $account_name, $password, $status)
+    {
+        DB::insert('insert into account values (?,?,?,?,?)',[$id, $position_id, $account_name, $password, $status]);
+    }
 }

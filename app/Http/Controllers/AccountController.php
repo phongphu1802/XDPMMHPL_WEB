@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\AccountModel;
+use App\Models\PositionModel;
 use Session;
 use Cookie;
+use Hash;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -42,12 +44,26 @@ class AccountController extends Controller
     }
 
     public function hidden_account(Request $request){
-        AccountModel::hidden_account($request->input('id'),0);
-        return Redirect::to(account_management());
+        AccountModel::hidden_account($request->get('id'),0);
+        return $this->account_management();
     }
 
     public function unhidden_account(Request $request){
-        AccountModel::hidden_account($request->input('id'),1);
-        return Redirect::to(account_management());
+        AccountModel::hidden_account($request->get('id'),1);
+        return $this->account_management();
+    }
+
+    public function add_account()
+    {
+        return view('admin.add_account')
+                ->with('arPosition',PositionModel::position());
+    }
+
+    public function add_save_account(Request $request)
+    {
+        $id = AccountModel::select_account_end();
+        $password = Hash::make($request->get('password'));
+        AccountModel::insert($id+1, $request->get('position_id'), $request->get('username'), $password, 2);
+        return $this->account_management();
     }
 }

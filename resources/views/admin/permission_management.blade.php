@@ -5,12 +5,8 @@
             <div class="panel-heading">
                 Quản lý quyền
             </div>
-            <form method="get" action="{{URL::to('admin/13/add')}}">
-                <button type="submit" class="btn btn-warning" id="add_position" onClick="" style="margin-top: 10px;margin-left: 10px; float: left" >Thêm quyền mới</button>
-            </form>
-            <form method="get" action="{{URL::to('admin/13/unhidden')}}">
-            <button type="submit" class="btn btn-warning" id="open_position" onClick="" style="margin-top: 10px;margin-left: 10px; float: left">Mở quyền đã ẩn</button>
-            </form>
+            <a href="{{URL::to('admin/13/add')}}"><button type="submit" class="btn btn-warning" id="add_position" onClick="" style="margin-top: 10px;margin-left: 10px; float: left" >Thêm quyền mới</button></a>
+            <a href="{{URL::to('admin/13/unhidden')}}"><button type="submit" class="btn btn-warning" id="open_position" onClick="" style="margin-top: 10px;margin-left: 10px; float: left">Mở quyền đã ẩn</button></a>
         <div>
             <div class="panel-body" style="margin-top: 40px">
                 <table id="table_position_permission" class="display" style="width:100%">
@@ -24,7 +20,8 @@
                                         <button class="btn btn-info btn-sm" style="float: left" title="Chỉnh sửa thông tin quyền" name="id" value="{{$arrayPosition->id}}" id="{{$arrayPosition->id}}" type="submit"><i class="fa fa-edit"></i></button>
                                     </form>
 
-                                    <form method="get" action="{{URL::to('admin/13/hidden')}}">
+                                    <form method="post" action="{{URL::to('admin/13/hidden')}}">
+                                        {{ csrf_field() }}
                                         <button class="btn btn-danger btn-sm" style="float: left; margin-left: 5px" title="Ẩn quyền" name="id" value="{{$arrayPosition->id}}" id="id" type="submit"><i class="fa fa-lock" ></i></button>
                                     </form>
                                 </th>
